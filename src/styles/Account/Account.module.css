@@ -1,0 +1,187 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 1450px;
+  margin: 8rem auto 3rem auto;
+  gap: 1.5rem;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 1.5rem;
+}
+
+.section {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: #2B6BE7;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: #2B6BE7;
+}
+
+.editIcon {
+  cursor: pointer;
+  color: #2B6BE7;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 14px;
+  color: #6B7280;
+}
+
+.value {
+  font-size: 16px;
+  color: #111827;
+}
+
+.dropdownHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+.arrow {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+  color: #2B6BE7;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.dropdownContent {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #E5E7EB;
+  font-size: 16px;
+  color: #374151;
+}
+
+/* New styles for profile form */
+.profileForm {
+  width: 100%;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-size: 14px;
+  color: #6B7280;
+  font-weight: 500;
+}
+
+.formGroup input {
+  padding: 0.75rem;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #111827;
+  transition: border-color 0.2s ease;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: #2B6BE7;
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #2B6BE7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submitButton:hover {
+  background-color: #1d4ed8;
+}
+
+.saveIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.logoutButton {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: none;
+  border: none;
+  color: #2B6BE7;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.logoutButton:hover {
+  color: #1d4ed8;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .detailsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .formGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    width: 80%;
+  }
+}
