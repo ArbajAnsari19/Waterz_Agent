@@ -12,16 +12,20 @@ const Account: React.FC = () => {
   const dispatch = useAppDispatch();
   const { userDetails } = useAppSelector((state) => state.user);
   
+  // Section toggle states
   const [isAccountTypeOpen, setIsAccountTypeOpen] = useState(false);
   const [isTermsOpen, setIsTermsOpen] = useState(false);
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  
+  // Form states
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   
   // Profile form state
   const [profileData, setProfileData] = useState({
-    username: '',
     age: '',
     address: '',
     experience: '',
@@ -29,7 +33,7 @@ const Account: React.FC = () => {
     accountNumber: '',
     bankName: '',
     ifscCode: '',
-    imgUrl: ''
+    imgUrl: [] as string[]
   });
 
   const handleProfileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,11 +44,42 @@ const Account: React.FC = () => {
     }));
   };
 
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+    
+    setIsUploading(true);
+    setUploadError(null);
+    
+    try {
+      const file = e.target.files[0];
+      const isValidType = file.type.startsWith('image/');
+      const isValidSize = file.size <= 5 * 1024 * 1024; // 5MB limit
+
+      if (!isValidType || !isValidSize) {
+        setUploadError('Please upload an image file under 5MB.');
+        return;
+      }
+
+      // Simulating upload - replace with actual upload logic
+      setTimeout(() => {
+        setProfileData(prev => ({ 
+          ...prev, 
+          imgUrl: [...prev.imgUrl, URL.createObjectURL(file)]
+        }));
+        setIsUploading(false);
+      }, 1000);
+    } catch (error) {
+      setUploadError('Failed to upload image. Please try again.');
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
   const handleProfileSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
-    if (!profileData.username || !profileData.age || !profileData.address || 
+    if (!profileData.age || !profileData.address || 
         !profileData.experience || !profileData.accountHolderName || 
         !profileData.accountNumber || !profileData.bankName || !profileData.ifscCode) {
       toast.error('Please fill in all required fields');
@@ -65,9 +100,6 @@ const Account: React.FC = () => {
       toast.success('Profile updated successfully!');
       setIsProfileOpen(false);
       
-      // Optionally update user details in Redux if needed
-      // dispatch(updateUserDetails(response.data));
-      
     } catch (error: any) {
       toast.error(error.response?.data?.message || 'Failed to update profile');
       console.error('Error updating profile:', error);
@@ -87,6 +119,7 @@ const Account: React.FC = () => {
     <div className={styles.container}>
       <h1 className={styles.title}>Account</h1>
 
+      {/* Personal Details Section */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>Personal Details</h2>
@@ -108,6 +141,7 @@ const Account: React.FC = () => {
         </div>
       </section>
 
+      {/* Complete Profile Section */}
       <section className={styles.section}>
         <div className={styles.dropdownHeader} onClick={() => setIsProfileOpen(!isProfileOpen)}>
           <h2 className={styles.sectionTitle}>Complete Your Profile</h2>
@@ -116,50 +150,62 @@ const Account: React.FC = () => {
         {isProfileOpen && (
           <div className={styles.dropdownContent}>
             <form onSubmit={handleProfileSubmit} className={styles.profileForm}>
-              <div className={styles.formGrid}>
+              <div className={styles.leftColumn}>
                 <div className={styles.formGroup}>
-                  <label htmlFor="username">Username*</label>
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={profileData.username}
-                    onChange={handleProfileChange}
-                    placeholder="Enter username"
-                    required
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label htmlFor="age">Age*</label>
+                  <label>Age*</label>
                   <input
                     type="number"
-                    id="age"
                     name="age"
                     value={profileData.age}
                     onChange={handleProfileChange}
                     placeholder="Enter age"
-                    required
                     min="18"
+                    required
                   />
                 </div>
+
                 <div className={styles.formGroup}>
-                  <label htmlFor="experience">Experience (years)*</label>
+                  <label>Experience (years)*</label>
                   <input
                     type="number"
-                    id="experience"
                     name="experience"
                     value={profileData.experience}
                     onChange={handleProfileChange}
                     placeholder="Years of experience"
-                    required
                     min="0"
+                    required
                   />
                 </div>
+
                 <div className={styles.formGroup}>
-                  <label htmlFor="address">Address*</label>
+                  <label>Profile Picture*</label>
+                  <div className={styles.fileUpload}>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFileChange}
+                      disabled={isUploading}
+                    />
+                    {isUploading && (
+                      <div className={styles.uploadingStatus}>Uploading...</div>
+                    )}
+                    {uploadError && (
+                      <div className={styles.errorMessage}>{uploadError}</div>
+                    )}
+                    {profileData.imgUrl[0] && (
+                      <div className={styles.imagePreview}>
+                        <img src={profileData.imgUrl[0]} alt="Profile" />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.rightColumn}>
+                <div className={styles.formGroup}>
+                  <label>Address*</label>
                   <input
                     type="text"
-                    id="address"
                     name="address"
                     value={profileData.address}
                     onChange={handleProfileChange}
@@ -167,12 +213,11 @@ const Account: React.FC = () => {
                     required
                   />
                 </div>
-                
+
                 <div className={styles.formGroup}>
-                  <label htmlFor="accountHolderName">Account Holder Name*</label>
+                  <label>Account Holder Name*</label>
                   <input
                     type="text"
-                    id="accountHolderName"
                     name="accountHolderName"
                     value={profileData.accountHolderName}
                     onChange={handleProfileChange}
@@ -180,11 +225,11 @@ const Account: React.FC = () => {
                     required
                   />
                 </div>
+
                 <div className={styles.formGroup}>
-                  <label htmlFor="accountNumber">Account Number*</label>
+                  <label>Account Number*</label>
                   <input
                     type="text"
-                    id="accountNumber"
                     name="accountNumber"
                     value={profileData.accountNumber}
                     onChange={handleProfileChange}
@@ -192,11 +237,11 @@ const Account: React.FC = () => {
                     required
                   />
                 </div>
+
                 <div className={styles.formGroup}>
-                  <label htmlFor="bankName">Bank Name*</label>
+                  <label>Bank Name*</label>
                   <input
                     type="text"
-                    id="bankName"
                     name="bankName"
                     value={profileData.bankName}
                     onChange={handleProfileChange}
@@ -204,11 +249,11 @@ const Account: React.FC = () => {
                     required
                   />
                 </div>
+
                 <div className={styles.formGroup}>
-                  <label htmlFor="ifscCode">IFSC Code*</label>
+                  <label>IFSC Code*</label>
                   <input
                     type="text"
-                    id="ifscCode"
                     name="ifscCode"
                     value={profileData.ifscCode}
                     onChange={handleProfileChange}
@@ -217,6 +262,7 @@ const Account: React.FC = () => {
                   />
                 </div>
               </div>
+
               <button 
                 type="submit" 
                 className={styles.submitButton}
@@ -230,6 +276,7 @@ const Account: React.FC = () => {
         )}
       </section>
 
+      {/* Account Type Section */}
       <section className={styles.section}>
         <div className={styles.dropdownHeader} onClick={() => setIsAccountTypeOpen(!isAccountTypeOpen)}>
           <h2 className={styles.sectionTitle}>Account Type</h2>
@@ -242,7 +289,7 @@ const Account: React.FC = () => {
         )}
       </section>
 
-      {/* Rest of the sections remain the same */}
+      {/* Terms & Conditions Section */}
       <section className={styles.section}>
         <div className={styles.dropdownHeader} onClick={() => setIsTermsOpen(!isTermsOpen)}>
           <h2 className={styles.sectionTitle}>Terms & Conditions</h2>
@@ -255,6 +302,7 @@ const Account: React.FC = () => {
         )}
       </section>
 
+      {/* Privacy Policy Section */}
       <section className={styles.section}>
         <div className={styles.dropdownHeader} onClick={() => setIsPrivacyOpen(!isPrivacyOpen)}>
           <h2 className={styles.sectionTitle}>Security & Privacy Policy</h2>
@@ -267,6 +315,7 @@ const Account: React.FC = () => {
         )}
       </section>
 
+      {/* Help Section */}
       <section className={styles.section}>
         <div className={styles.dropdownHeader} onClick={() => setIsHelpOpen(!isHelpOpen)}>
           <h2 className={styles.sectionTitle}>Help & Contact Us</h2>

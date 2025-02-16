@@ -35,7 +35,7 @@ export const paths = {
     prevRides: `${agent}/prev/rides`,
     prevRidesId: `${agent}/rides`,
     agentEarnings: `${agent}/me/earnings`,
-    registerAgent: `${agent}/register-agent`
+    updateProfile: `${agent}/updateProfile`
 };
 
 export default paths;

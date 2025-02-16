@@ -212,26 +212,30 @@ const Details: React.FC = () => {
             </div>
             <div className={styles.yacht_details_box}>
                 <div className={styles.details}>
-                    <div className={styles.prices}>
+                <div className={styles.prices}>
                         <div className={styles.left}>
                             <div className={styles.price_head}>Prices</div>
                             <div className={styles.price_box}>
-                                <div className={styles.pricess}>
-                                    <div className={styles.price_type}>Sailing Price</div>
-                                    <div className={styles.price_value}>₹{yacht.price.sailing.toLocaleString()} per hour</div>
+                            <div className={styles.pricess}>
+                                <div className={styles.price_type}>Sailing Price</div>
+                                <div className={styles.price_value}>
+                                ₹{yacht.price?.sailing?.peakTime?.toLocaleString() || "N/A"} per hour
                                 </div>
-                                <div className={styles.pricess2}>
-                                    <div className={styles.price_type}>Still Price</div>
-                                    <div className={styles.price_value}>₹{yacht.price.still.toLocaleString()} per hour</div>
+                            </div>
+                            <div className={styles.pricess2}>
+                                <div className={styles.price_type}>Anchoring Price</div>
+                                <div className={styles.price_value}>
+                                ₹{yacht.price?.anchoring?.peakTime?.toLocaleString() || "N/A"} per hour
                                 </div>
+                            </div>
                             </div>
                         </div>
                         <div className={styles.Right}>
-                            {/* <Link to="/booking-details", { id: { id } }> */}
-                               <button className={styles.bookButton} onClick={handleBookNow} >Book Now</button>
-                            {/* </Link> */}
+                            <button className={styles.bookButton} onClick={handleBookNow}>
+                            Book Now
+                            </button>
                         </div>
-                    </div>
+                        </div>
                     <div className={styles.about}>
                         <h3>About {yacht.name}</h3>
                         <p>{yacht.description}</p>
@@ -258,7 +262,7 @@ const Details: React.FC = () => {
                         <h3>Specifications</h3>
                         <p><b>Length:</b> {yacht.dimension}</p>
                         <p><b>Passenger Capacity:</b> {yacht.capacity} people</p>
-                        <p><b>Crew:</b> {yacht.crews.length}</p>
+                        <p><b>Crew:</b> {yacht.crews}</p>
                     </div>
                     <div className={styles.meetingPoint}>
                         <h3>Meeting Point Address</h3>

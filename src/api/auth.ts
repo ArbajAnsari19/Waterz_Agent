@@ -17,7 +17,6 @@ interface SignupData {
 }
 
 interface AgentProfileData {
-  username: string;
   age: number;
   address: string;
   experience: number;
@@ -25,7 +24,7 @@ interface AgentProfileData {
   accountNumber: string;
   bankName: string;
   ifscCode: string;
-  imgUrl?: string;
+  imgUrl?: string[];
 }
 
 interface OTPData {
@@ -51,7 +50,9 @@ export const authAPI = {
   },
 
   registerAgent: async (profileData: AgentProfileData) => {
-    const response = await apiClient.post(paths.registerAgent, profileData);
+    console.log('profileData', profileData);
+    const response = await apiClient.post(paths.updateProfile, profileData);
+    console.log('response', response);
     return response.data;
   },
 

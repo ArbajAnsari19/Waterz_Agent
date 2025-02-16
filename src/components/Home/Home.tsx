@@ -49,9 +49,9 @@ const solutionData = [
 const Home: React.FC = () => {
     const { yachts, loading } = useTopYachts();
 
-    // if (loading) {
-    //     return <div>Loading...</div>;
-    // }
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return(
         <div className={styles.comp_body}>
