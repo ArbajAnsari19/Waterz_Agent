@@ -10,7 +10,8 @@ import { GoMultiSelect } from "react-icons/go";
 import { BiSad } from 'react-icons/bi';
 import { useAppDispatch } from "../../redux/store/hook";
 import { setLoading } from "../../redux/slices/loadingSlice";
-
+import { toast } from "react-toastify";
+import EarningCard from "../Layouts/EarningCard";
 export interface OwnerBookingType {
   id: string;
   yachtId: string;
@@ -239,10 +240,36 @@ const Booking: React.FC = () => {
           {(isTotalEarning ? earnings.allBookings : earnings.sevenDaysBookings).length === 0 ? (
             <NoEarningsMessage />
           ) : (
-            <Swiper spaceBetween={10} slidesPerView={3.2} pagination={{ clickable: true }} style={{ padding: "20px 0", width: "100%" }}>
+            <Swiper
+            spaceBetween={60}
+            slidesPerView="auto"
+            pagination={{ clickable: true }}
+            style={{ 
+              padding: "20px 0", 
+              width: "100%",
+            }}
+            breakpoints={{
+              320: {
+                slidesPerView: "auto",
+                spaceBetween: 20
+              },
+              480: {
+                slidesPerView: "auto",
+                spaceBetween: 25
+              },
+              768: {
+                slidesPerView: "auto",
+                spaceBetween: 30
+              },
+              1024: {
+                slidesPerView: "auto",
+                spaceBetween: 50
+              }
+            }}
+            >
               {(isTotalEarning ? earnings.allBookings : earnings.sevenDaysBookings).map((booking) => (
-                <SwiperSlide key={booking.id}>
-                  <BookedCard
+                <SwiperSlide key={booking.id} className={styles.swiper_slide}>
+                  <EarningCard
                     name={booking.yacht?.name || ''}
                     //@ts-ignore
                     capacity={booking.totalAmount}
@@ -251,7 +278,7 @@ const Booking: React.FC = () => {
                     imageUrl={booking.yacht?.images?.[0] || Y2}
                     yachtId={booking.yachtId}
                     // isPrev={true}
-                    // isEarning={true}
+                    isEarning={true}
                   />
                 </SwiperSlide>
               ))}

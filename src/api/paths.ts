@@ -2,7 +2,6 @@
 const URL = "http://localhost:8000"; //local server
 const userBaseURL = URL + "/user";
 const signUp = URL + "/auth";
-const booking = URL + "/booking";
 const customer = URL + "/customer";
 const agent = URL + "/agent";
 
@@ -16,7 +15,7 @@ export const paths = {
   googleAuth: `${userBaseURL}/google`,
   
   // User endpoints
-  getUserProfile: `${userBaseURL}/profile`,
+  getUserProfile: `${agent}/me`,
   updateUserProfile: `${userBaseURL}/profile/update`,
   
   // yacht
