@@ -22,20 +22,22 @@ export const paths = {
   // yacht
   getYachtList: `${customer}/listAll`,
   getTopYachts: `${customer}/topYatch`,
+  getYachtById: `${customer}/yatch-detail`,
 
   // query
   userQuery: `${URL}/query`,
 
   // filter
   locationFilter: `${booking}/idealYatchs`,
-  bookYacht: `${booking}/create`,
+  bookYacht: `${agent}/create-booking`,
 
   // Booking endpoints
     currentRides: `${agent}/current/rides`,
     prevRides: `${agent}/prev/rides`,
     prevRidesId: `${agent}/rides`,
     agentEarnings: `${agent}/me/earnings`,
-    registerAgent: `${agent}/register-agent`
+    registerAgent: `${agent}/register-agent`,
+    couponCode: `${customer}/validatePromoCode`
 };
 
 export default paths;

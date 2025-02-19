@@ -55,6 +55,7 @@ import Login from './components/LoginSignup/Login';
 import PaymentSuccess from './components/Payment/PaymentSuccess';
 import PaymentFailed from './components/Payment/PaymentFailed'; 
 import Account from './components/Account/Account';
+import BookingData from './components/Booking/BookingData';
 function App() {
   const location = useLocation();
 
@@ -66,10 +67,12 @@ function App() {
     <>
       <Routes>
         <Route path="/signup/:referralCode" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<MainLayout><Home/></MainLayout>} />
         <Route path="/discover" element={<MainLayout><Discover/></MainLayout>} />
         <Route path="/bookings" element={<MainLayout><Booking/></MainLayout>} />
+        <Route path="/booking/:id" element={<MainLayout><BookingData/></MainLayout>} />
         <Route path="/location" element={<MainLayout><Location/></MainLayout>} />
         <Route path="/choose" element={<MainLayout><Choose/></MainLayout>} />
         <Route path="/yacht/:id" element={<MainLayout><Details/></MainLayout>} />

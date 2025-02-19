@@ -168,6 +168,12 @@
     border-top-left-radius: 24px;
     border-bottom-left-radius: 24px;
   }
+
+  @media (max-width: 1024px){
+    .imageSection{
+      display: none;
+    }
+  }
   
   @media (max-width: 768px) {
     .container {
@@ -175,7 +181,8 @@
     }
     
     .contentSection {
-      padding: 2rem;
+      padding: 1rem;
+      width: 90%;
     }
     
     .imageSection {

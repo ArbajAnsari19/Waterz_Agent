@@ -2,11 +2,11 @@ import { apiClient } from './apiClient';
 import { paths } from './paths';
 
 export interface Booking {
-  id: string;
+  _id: string;
   name: string;
   capacity: number;
-  startingPrice: string;
-  imageUrl: string;
+  startDate: string;
+  images: string[];
 }
 
 export interface OwnerBookingType {

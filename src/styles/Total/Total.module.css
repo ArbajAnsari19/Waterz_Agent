@@ -100,8 +100,83 @@
     margin: 5rem 0 5rem 0;
     transition: background-color 0.2s;
     max-width: 250px;
+    min-width: 15rem;
 }
 
 .submit_button:hover {
     background-color: #1f5ac9;
+}
+
+
+.coupon_section {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.coupon_button {
+    background: none;
+    border: none;
+    color: #2B6BE7;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+}
+
+.coupon_input_container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.coupon_input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 0.5rem;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.coupon_input:focus {
+    border-color: #2B6BE7;
+}
+
+.apply_button {
+    padding: 0.75rem 1.5rem;
+    background-color: #2B6BE7;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.apply_button:hover {
+    background-color: #1f5ac9;
+}
+
+.apply_button:disabled {
+    background-color: #93b3f5;
+    cursor: not-allowed;
+}
+
+.error_message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 768px){
+    .coupon_input_container{
+        flex-direction: column;
+        gap: 2rem;
+        align-items: start;
+    }
 }

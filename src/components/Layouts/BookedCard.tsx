@@ -5,17 +5,28 @@ import styles from '../../styles/Layouts/YatchCard.module.css';
 interface YachtCardProps {
   name: string;
   capacity: number;
-  startingPrice: string;
-  imageUrl: string;
-  yachtId: string; // Unique ID for the yacht
+  startDate: string;
+  images: string;
+  bookingId: string; // Unique ID for the yacht
+  booking?: any;
 }
 
-const BookedCard: React.FC<YachtCardProps> = ({ name, capacity, startingPrice, imageUrl, yachtId }) => {
+const BookedCard: React.FC<YachtCardProps> = ({ name, capacity, startDate, images, bookingId, booking }) => {
   const navigate = useNavigate();
 
   const handleBookNow = () => {
-    navigate(`/yacht/${yachtId}`);
+    navigate(`/booking/${bookingId}`, {state: {booking: booking}});
   };
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+};
 
   return (
     <div className={styles.card}>
@@ -24,8 +35,8 @@ const BookedCard: React.FC<YachtCardProps> = ({ name, capacity, startingPrice, i
         <p className={styles.capacity}>Capacity: {capacity} people</p>
       </div>
       <div className={styles.imageContainer}>
-        <img src={imageUrl} alt={name} className={styles.image} />
-        <div className={styles.priceTag}>Starting from {startingPrice}</div>
+        <img src={images} alt={name} className={styles.image} />
+        <div className={styles.priceTag}>Date: {formatDate(startDate)}</div>
       </div>
       <button className={styles.bookButton} onClick={handleBookNow}>
         View Details

@@ -113,3 +113,8 @@
     padding: 0px 0;
     margin: 1rem 0 3rem 0;
 }
+
+.swiper_slide {
+    width: 300px !important;
+    min-width: 300px !important;
+}

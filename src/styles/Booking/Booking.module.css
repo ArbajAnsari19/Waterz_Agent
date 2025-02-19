@@ -90,6 +90,11 @@
     margin: 1rem 0 3rem 0;
 }
 
+.swiper_slide {
+    width: 300px !important;
+    min-width: 300px !important;
+}
+
 .section_head_container{
     display: flex;
     justify-content:start;

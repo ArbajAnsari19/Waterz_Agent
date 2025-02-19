@@ -41,5 +41,18 @@
 }
 
 
+ @media (max-width: 768px){
+    .card{
+        width: 250px;
+    }
+ }
+
+  @media (max-width: 400px){
+    .card{
+        padding: 1rem;
+        width: 235px;
+    }
+ }
+
   
   

@@ -166,13 +166,20 @@
     border-bottom-left-radius: 24px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px){
+    .imageSection{
+      display: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
     .container {
-        flex-direction: column;
+      flex-direction: column;
     }
     
     .contentSection {
-        padding: 2rem;
+      padding: 1rem;
+      width: 90%;
     }
     
     .imageSection {
