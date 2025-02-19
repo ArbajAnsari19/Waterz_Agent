@@ -222,7 +222,12 @@ const Total: React.FC = () => {
                 </div>
                 <div className={styles.item_row}>
                     <div className={styles.item_label}>GST(18%)</div>
-                    <div className={styles.item_value}>{cgst.toLocaleString()}</div>
+                    <div className={styles.item_value}>+{cgst.toLocaleString()}</div>
+                </div>
+
+                <div className={styles.item_row} >
+                    <div className={styles.item_label}>Your Commission</div>
+                    <div className={styles.item_value}>- {pricingDetail.yourComission.toLocaleString()}</div>
                 </div>
                 
                 {/* Coupon Code Section */}

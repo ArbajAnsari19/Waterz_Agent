@@ -81,6 +81,7 @@ const Booking: React.FC = () => {
         // setEarnings(earningsData);
       } catch (err: any) {
         dispatch(setLoading(false));
+        toast.error(error)
         setError(err?.message || 'Failed to fetch bookings');
       } finally {
         dispatch(setLoading(false));

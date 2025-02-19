@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Select, { SingleValue } from "react-select";
+import Select from "react-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "../../styles/Booking/BookingDetails.module.css";
@@ -43,6 +43,38 @@ const BookingDetails: React.FC = () => {
       packageTotal: 0,
       totalPrice: 0
     });
+
+    const [isPeak, setIsPeak] = useState(true);
+
+    const isWithinWorkingHours = (timeStr: string): boolean => {
+      // Expecting the format "HH:MM AM/PM" (e.g., "11:00 AM")
+      const [time, period] = timeStr.trim().split(" ");
+      if (!time || !period) {
+        throw new Error("Invalid time format. Expected format 'HH:MM AM/PM'");
+      }
+      
+      const [hourStr, minuteStr] = time.split(":");
+      let hours = parseInt(hourStr, 10);
+      const minutes = parseInt(minuteStr, 10);
+      
+      // Convert to 24-hour format
+      if (period.toUpperCase() === "PM" && hours !== 12) {
+        hours += 12;
+      }
+      if (period.toUpperCase() === "AM" && hours === 12) {
+        hours = 0;
+      }
+      
+      // Calculate total minutes from midnight for the input time
+      const totalMinutes = hours * 60 + minutes;
+      
+      // Define the working hours range in minutes (8:00 AM to 5:00 PM)
+      const startMinutes = 8 * 60;   // 480 minutes (8:00 AM)
+      const endMinutes = 17 * 60;    // 1020 minutes (5:00 PM)
+      
+      return totalMinutes >= startMinutes && totalMinutes < endMinutes;
+    };
+
     const [formData, setFormData] = useState<FormData>({
         startDate: new Date(),
         startTime: new Date(),
@@ -58,6 +90,16 @@ const BookingDetails: React.FC = () => {
         customerEmail: "",
         customerPhone: ""
     });
+
+    useEffect(() => {
+      if (formData.startTime) {
+        // Convert the startTime Date to a string in the format "h:mm aa"
+        const options: Intl.DateTimeFormatOptions = { hour: 'numeric', minute: 'numeric', hour12: true };
+        const timeStr = formData.startTime.toLocaleTimeString('en-US', options);
+        // If the time is within working hours (non-peak), then isPeak should be false.
+        setIsPeak(!isWithinWorkingHours(timeStr));
+      }
+    }, [formData.startTime]);
 
 
     useEffect(() => {
@@ -97,9 +139,11 @@ const BookingDetails: React.FC = () => {
         const [sailingTime, anchoringTime] = packageType.split('_hours_sailing_')
           .map(time => parseFloat(time.replace('_hour_anchorage', '')));
         
-        const sailingPrice = yachtData.price.sailing.nonPeakTime * sailingTime;
-        const anchoringPrice = yachtData.price.anchoring.nonPeakTime * anchoringTime;
+        const sailingPrice = isPeak ? yachtData.price.sailing.peakTime * sailingTime : yachtData.price.sailing.nonPeakTime * sailingTime;
+        const anchoringPrice = isPeak ? yachtData.price.anchoring.peakTime * anchoringTime : yachtData.price.anchoring.nonPeakTime * anchoringTime;
         const totalPrice = sailingPrice + anchoringPrice;
+        console.log("saling", sailingPrice);
+        console.log("anchoring", anchoringPrice);
     
         return {
           value: packageType,

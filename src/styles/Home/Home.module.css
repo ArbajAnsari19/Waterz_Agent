@@ -151,8 +151,12 @@
     }
 }
 
-@media (max-width: 768px){
+@media (max-width: 900px){
     .gridBox{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         gap: 2rem;
     }
 }

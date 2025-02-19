@@ -15,7 +15,7 @@
     justify-content: space-between;
     gap: 0;
     width: 100%;
-    
+    max-width: 400px;
     border-radius: 3rem;
     padding: 6px 0;
     margin: 1rem auto 3rem auto;
@@ -24,6 +24,7 @@
 .Y2 {
     width: 100%;
     /* height: 500px; */
+    border-radius: 4px;
 }
 
 .yatchBox {

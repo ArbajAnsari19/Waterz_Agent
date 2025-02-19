@@ -28,7 +28,7 @@ export const paths = {
   userQuery: `${URL}/query`,
 
   // filter
-  locationFilter: `${booking}/idealYatchs`,
+  locationFilter: `${customer}/idealYatchs`,
   bookYacht: `${agent}/create-booking`,
 
   // Booking endpoints

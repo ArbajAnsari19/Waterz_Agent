@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import styles from "../../styles/YachtDetails/YachtDetails.module.css";
-import { getYachtPrice } from '../../types/pricing';
 // Constant details that don't change between yachts
 const constantDetails = {
   schedule: [
@@ -74,8 +73,6 @@ const Details: React.FC = () => {
     });
   };
 
-  const currentSailingPrice = getYachtPrice(yacht, 'sailing');
-  const currentAnchoragePrice = getYachtPrice(yacht, 'anchoring');
 
   return (
     <div className={styles.comp_body}>
@@ -96,20 +93,20 @@ const Details: React.FC = () => {
                 <div className={styles.pricess}>
                   <div className={styles.price_type}>Sailing Price</div>
                   <div className={styles.price_value}>
-                    ₹{currentSailingPrice || 'N/A'} per hour
+                    Peak Time: ₹{yacht.price?.sailing?.peakTime?.toLocaleString() || 'N/A'} per hour
                   </div>
-                  {/* <div className={styles.price_value}>
+                  <div className={styles.price_value}>
                     Non Peak Time: ₹{yacht.price?.sailing?.nonPeakTime?.toLocaleString() || 'N/A'} per hour
-                  </div> */}
+                  </div>
                 </div>
                 <div className={styles.pricess2}>
                   <div className={styles.price_type}>Anchoring Price</div>
                   <div className={styles.price_value}>
-                   ₹{currentAnchoragePrice || 'N/A'} per hour
+                    Peak Time: ₹{yacht.price?.anchoring?.peakTime?.toLocaleString() || 'N/A'} per hour
                   </div>
-                  {/* <div className={styles.price_value}>
+                  <div className={styles.price_value}>
                     Non Peak Time: ₹{yacht.price?.anchoring?.nonPeakTime?.toLocaleString() || 'N/A'} per hour
-                  </div> */}
+                  </div>
                 </div>
               </div>
             </div>

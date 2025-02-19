@@ -50,7 +50,7 @@ const Choose: React.FC = () => {
       <div className={styles.yachtGrid}>
         {/* @ts-ignore */}
         {displayedYachts?.map((yacht) => (
-          <YachtCard key={yacht._id} yacht={yacht} />
+          <YachtCard showLoc={filterEmpty} key={yacht._id} yacht={yacht} />
         ))}
       </div>
     </div>

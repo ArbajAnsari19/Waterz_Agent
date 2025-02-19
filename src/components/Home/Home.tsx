@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "../../styles/Home/Home.module.css"
 import YachtCard from "../Layouts/YatchCard";
-import hh1 from "../../assets/Home/hh1.svg";
-import hh2 from "../../assets/Home/hh2.svg";
+// import hh1 from "../../assets/Home/hh1.svg";
+// import hh2 from "../../assets/Home/hh2.svg";
 import hh3 from "../../assets/Home/hh3.svg";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
@@ -72,14 +72,14 @@ const Home: React.FC = () => {
                 </Link>
               </div>
               <div className={styles.hero_right}>
-              <div className={styles.hero_box1}>
+              {/* <div className={styles.hero_box1}>
                 <div className={styles.hero_imgbox}>
                     <img src={hh1} className={styles.hh} />
                 </div>
                 <div className={styles.hero_imgbox}>
                   <img src={hh2} className={styles.hh} />
                 </div>
-              </div>
+              </div> */}
               <div className={styles.hero_box2}>
                 <img src={hh3} className={styles.hh2} />
               </div>
