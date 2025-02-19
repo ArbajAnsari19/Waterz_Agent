@@ -37,7 +37,9 @@ export const paths = {
     prevRidesId: `${agent}/rides`,
     agentEarnings: `${agent}/me/earnings`,
     registerAgent: `${agent}/register-agent`,
-    couponCode: `${customer}/validatePromoCode`
+    couponCode: `${customer}/validatePromoCode`,
+    updateProfile: `${agent}/updateProfile`,
+
 };
 
 export default paths;

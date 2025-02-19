@@ -8,9 +8,6 @@ interface YachtCardProps {
   yacht: Yacht;
 }
 
-interface YachtCardProps {
-  yacht: Yacht;
-}
 
 const YachtCard: React.FC<YachtCardProps> = ({ yacht }) => {
   const navigate = useNavigate();
