@@ -9,7 +9,6 @@ import { bookingAPI } from "../../api/bookingApi";
 import { GoMultiSelect } from "react-icons/go";
 import { BiSad } from 'react-icons/bi';
 import { useAppDispatch } from "../../redux/store/hook";
-import { toast } from "react-toastify";
 import { setLoading } from "../../redux/slices/loadingSlice";
 
 export interface OwnerBookingType {
@@ -58,6 +57,7 @@ const Booking: React.FC = () => {
     thirtyDaysBookings: [],
     allBookings: []
   });
+  console.log("Everything working good no ",error)
 
   useEffect(() => {
     const fetchBookings = async () => {
@@ -65,6 +65,9 @@ const Booking: React.FC = () => {
         dispatch(setLoading(true));
         const current = await bookingAPI.getCurrentBookings();
         const previous = await bookingAPI.getPreviousBookings();
+        const earnings = await bookingAPI.getEarnings();
+        setEarnings(earnings);
+        console.log("Current Earning ", earnings);
         console.log("CURRENT DATA IS HERE :", current);
         console.log("PREVIOUS DATA IS HERE :", previous);
         // const earningsData = await bookingAPI.getEarnings();
@@ -76,7 +79,7 @@ const Booking: React.FC = () => {
         // @ts-ignore
         if (Array.isArray(previous.AllBokingRides)) {
         // @ts-ignore
-          setPreviousBookings(previous.AllBokingRides);
+        setPreviousBookings(previous.AllBokingRides);
         }
         // setEarnings(earningsData);
       } catch (err: any) {
