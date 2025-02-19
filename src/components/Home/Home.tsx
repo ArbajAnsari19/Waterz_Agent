@@ -11,6 +11,7 @@ import { useTopYachts } from "../../hooks/useTopYacht";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
+
 const solutionData = [
   {
     id: "solution-1",

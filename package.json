@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@lottiefiles/dotlottie-react": "^0.13.0",
     "@reduxjs/toolkit": "^2.5.0",
     "@types/axios": "^0.14.4",
     "@types/react-datepicker": "^7.0.0",

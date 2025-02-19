@@ -67,7 +67,7 @@ const Booking: React.FC = () => {
         const previous = await bookingAPI.getPreviousBookings();
         console.log("CURRENT DATA IS HERE :", current);
         console.log("PREVIOUS DATA IS HERE :", previous);
-        const earningsData = await bookingAPI.getEarnings();
+        // const earningsData = await bookingAPI.getEarnings();
         // @ts-ignore
         if (Array.isArray(current.AllCurrentRides)) {
         // @ts-ignore
@@ -78,7 +78,7 @@ const Booking: React.FC = () => {
         // @ts-ignore
           setPreviousBookings(previous.AllBokingRides);
         }
-        setEarnings(earningsData);
+        // setEarnings(earningsData);
       } catch (err: any) {
         dispatch(setLoading(false));
         setError(err?.message || 'Failed to fetch bookings');

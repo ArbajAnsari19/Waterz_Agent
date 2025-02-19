@@ -32,6 +32,7 @@ const LoginForm = () => {
     try {
       setIsLoading(true);
       const response = await authAPI.login(formData);
+      console.log("user Data", response)
       
       if (response.token) {
         localStorage.setItem('token', response.token);

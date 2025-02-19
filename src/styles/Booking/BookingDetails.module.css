@@ -141,7 +141,7 @@
     margin: 5rem 0 4rem 0;
     transition: background-color 0.2s;
     max-width: 250px;
-    min-width: 14rem;
+    min-width: 15rem;
 }
 
 .submit_button:hover {
