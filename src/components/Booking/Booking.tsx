@@ -58,7 +58,6 @@ const Booking: React.FC = () => {
     thirtyDaysBookings: [],
     allBookings: []
   });
-  console.log("Everything working good no ",error)
 
   useEffect(() => {
     const fetchBookings = async () => {

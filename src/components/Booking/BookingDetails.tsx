@@ -130,7 +130,7 @@ const BookingDetails: React.FC = () => {
       // Convert addon services to Select options
       const addonServicesOptions = yachtData?.addonServices.map(service => ({
         value: service.service,
-        label: `${service.service} (₹${service.pricePerHour}/hour)`,
+        label: `${service.service} (₹${service.pricePerHour})`,
         price: service.pricePerHour
       })) || [];
     
