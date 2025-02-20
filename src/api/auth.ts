@@ -72,7 +72,14 @@ export const authAPI = {
   },
 
   getUserProfile: async (): Promise<UserDetails> => {
-    const response = await apiClient.get(paths.getUserProfile);
+    const token = localStorage.getItem('token');
+    const response = await apiClient.get(paths.getUserProfile,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
     return response.data;
   },
 
