@@ -146,7 +146,7 @@ const Details: React.FC = () => {
                 {/* @ts-ignore */}
                 {yacht.addonServices.map(service => (
                   <li key={service._id}>
-                    {service.service}: ₹{service.pricePerHour.toLocaleString()} per hour
+                    {service.service}: ₹{service.pricePerHour.toLocaleString()}
                   </li>
                 ))}
               </ul>
