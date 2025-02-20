@@ -11,7 +11,6 @@ import { BiSad } from 'react-icons/bi';
 import {toast} from 'react-toastify';
 import { useAppDispatch } from "../../redux/store/hook";
 import { setLoading } from "../../redux/slices/loadingSlice";
-import { toast } from "react-toastify";
 import EarningCard from "../Layouts/EarningCard";
 export interface OwnerBookingType {
   id: string;
