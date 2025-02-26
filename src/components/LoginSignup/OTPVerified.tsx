@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import styles from "../../styles/LoginSignup/verified.module.css";
 import { CheckCircle } from "lucide-react";
 

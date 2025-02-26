@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from "../../styles/LoginSignup/welcome.module.css";
-import { authAPI } from '../../api/auth';
+
 
 interface OTPVerificationProps {
     email: string;

@@ -77,6 +77,7 @@ const Discover: React.FC = () => {
                       <YachtCard
                         key={yacht._id}
                         yacht={yacht}
+                        showLoc={false}
                       />
                     </SwiperSlide>
                   ))}
