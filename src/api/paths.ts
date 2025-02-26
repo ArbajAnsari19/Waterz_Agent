@@ -19,9 +19,9 @@ export const paths = {
   updateUserProfile: `${userBaseURL}/profile/update`,
   
   // yacht
-  getYachtList: `${customer}/listAll`,
-  getTopYachts: `${customer}/topYatch`,
-  getYachtById: `${customer}/yatch-detail`,
+  getYachtList: `${agent}/listAll`,
+  getTopYachts: `${agent}/topYatch`,
+  getYachtById: `${agent}/yatch-detail`,
 
   // query
   userQuery: `${URL}/query`,
