@@ -7,9 +7,8 @@ interface CustomError {
   status: number;
 }
 export const apiClient: AxiosInstance = axios.create({
-  
-  // baseURL: 'https://waterz-backend.onrender.com', 
-  baseURL: 'http://localhost:8000', // local server
+  baseURL: 'https://backend.wavezgoa.com', 
+  // baseURL: 'http://localhost:8000', // local server
   timeout: 20000,
   withCredentials: true,
   headers: {
@@ -91,8 +90,8 @@ apiClient.interceptors.response.use(
 );
 
 export const nonAuthApiClient: AxiosInstance = axios.create({
-    // baseURL: 'https://waterz-backend.onrender.com', 
-    baseURL: 'http://localhost:8000', // local server
+  baseURL: 'https://backend.wavezgoa.com', 
+  // baseURL: 'http://localhost:8000', // local server
   timeout: 20000,
   withCredentials: false,
   headers: {
