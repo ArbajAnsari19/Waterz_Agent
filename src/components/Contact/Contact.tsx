@@ -13,7 +13,7 @@ export const ContactForm: React.FC = () => {
   const [error, setError] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-
+  console.log("there is no ",error);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');

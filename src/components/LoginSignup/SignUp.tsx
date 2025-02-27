@@ -151,6 +151,7 @@ const SignUp: React.FC = () => {
 
   const handleSignupComplete = async (data: SignupData) => {
     try {
+      console.log('referralCode', referralCode);
       // @ts-ignore
       const response: SignupResponse = await authAPI.signup(data, referralCode);
       setFormData(data);

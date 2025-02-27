@@ -76,7 +76,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/signup/:referralCode" element={<SignUp />} />
+        <Route path="/signup/:referralCode?" element={<SignUp />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<MainLayout><Home /></MainLayout>} />
