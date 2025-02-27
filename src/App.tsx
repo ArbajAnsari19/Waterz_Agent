@@ -81,14 +81,34 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<MainLayout><Home /></MainLayout>} />
         <Route path="/discover" element={<MainLayout><Discover /></MainLayout>} />
-        <Route path="/bookings" element={<MainLayout><Booking /></MainLayout>} />
+        {/* <Route path="/bookings" element={<MainLayout><Booking /></MainLayout>} /> */}
         <Route path="/booking/:id" element={<MainLayout><BookingData /></MainLayout>} />
         <Route path="/location" element={<MainLayout><Location /></MainLayout>} />
         <Route path="/choose" element={<MainLayout><Choose /></MainLayout>} />
         <Route path="/yacht/:id" element={<MainLayout><Details /></MainLayout>} />
-        <Route path="/booking-details" element={<MainLayout><BookingDetails /></MainLayout>} />
+        {/* <Route path="/booking-details" element={<MainLayout><BookingDetails /></MainLayout>} /> */}
 
         {/* Protected routes */}
+        <Route 
+          path="/booking-details" 
+          element={
+            userDetails.id ? (
+              <MainLayout><BookingDetails /></MainLayout>
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          } 
+        />
+        <Route 
+          path="/bookings" 
+          element={
+            userDetails.id ? (
+              <MainLayout><Booking /></MainLayout>
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          } 
+        />
         <Route 
           path="/to-pay" 
           element={

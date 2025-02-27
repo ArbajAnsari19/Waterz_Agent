@@ -1,8 +1,8 @@
-// const URL = "https://waterz-backend.onrender.com"; 
-const URL = "http://localhost:8000"; //local server
+const URL = "https://backend.wavezgoa.com";  
+// const URL = "http://localhost:8000"; //local server
 const userBaseURL = URL + "/user";
 const signUp = URL + "/auth";
-const customer = URL + "/customer";
+// const customer = URL + "/customer";
 const agent = URL + "/agent";
 
 export const paths = {
@@ -19,15 +19,15 @@ export const paths = {
   updateUserProfile: `${userBaseURL}/profile/update`,
   
   // yacht
-  getYachtList: `${customer}/listAll`,
-  getTopYachts: `${customer}/topYatch`,
-  getYachtById: `${customer}/yatch-detail`,
+  getYachtList: `${agent}/listAll`,
+  getTopYachts: `${agent}/topYatch`,
+  getYachtById: `${agent}/yatch-detail`,
 
   // query
   userQuery: `${URL}/query`,
 
   // filter
-  locationFilter: `${customer}/idealYatchs`,
+  locationFilter: `${agent}/search-Yatch`,
   bookYacht: `${agent}/create-booking`,
 
   // Booking endpoints
@@ -36,7 +36,7 @@ export const paths = {
     prevRidesId: `${agent}/rides`,
     agentEarnings: `${agent}/me/earnings`,
     registerAgent: `${agent}/register-agent`,
-    couponCode: `${customer}/validatePromoCode`,
+    couponCode: `${agent}/validatePromoCode`,
     updateProfile: `${agent}/updateProfile`,
 
 };

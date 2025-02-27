@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../../styles/Contact/Contact.module.css';
 import { userQueryAPI } from '../../api/userQuery';
+import { toast } from "react-toastify";
 
 export const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -40,6 +41,10 @@ export const ContactForm: React.FC = () => {
       setIsLoading(false);
     }
   };
+
+  if (error) {
+    toast.error("Something Wrong Happened")
+  }
 
   return (
     <div className={styles.container}>
