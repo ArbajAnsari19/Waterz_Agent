@@ -1,5 +1,5 @@
-// const URL = "https://www.backend.wavezgoa.com";  
-const URL = "http://localhost:8000"; //local server
+const URL = "https://www.backend.wavezgoa.com";  
+// const URL = "http://localhost:8000"; //local server
 const userBaseURL = URL + "/user";
 const signUp = URL + "/auth";
 // const customer = URL + "/customer";
