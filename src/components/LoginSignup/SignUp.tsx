@@ -6,6 +6,7 @@ import OTPVerification from "./OTP";
 import { authAPI } from "../../api/auth";
 import SuccessScreen from "./OTPVerified";
 import { useNavigate, useParams } from "react-router-dom";
+import GoogleAuthButton from "./GoogleAuth";
 
 type ViewState = 'signup' | 'otp' | 'success';
 
@@ -116,10 +117,7 @@ const SignupForm = ({ onSubmit }: { onSubmit: (formData: SignupData) => Promise<
               {isLoading ? 'Signing up...' : 'Sign Up'}
             </button>
             <div className={styles.divider}><span>or</span></div>
-            <button type="button" className={styles.googleButton}>
-              <img src={googleIcon} alt="Google" />
-              Sign Up with Google
-            </button>
+            <GoogleAuthButton text="Sign Up with Google" />
             <p className={styles.loginPrompt}>
               Already have an account? <a href="/login" className={styles.link}>Log in</a>
             </p>

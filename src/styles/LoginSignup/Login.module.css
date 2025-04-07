@@ -136,6 +136,7 @@
     border-radius: 8px;
     font-size: 1rem;
     cursor: pointer;
+    color: #000000;
 }
 
 .loginPrompt {

@@ -23,6 +23,8 @@ import BookingData from './components/Booking/BookingData';
 import { useAppSelector, useAppDispatch } from './redux/store/hook';
 import { setUserDetails } from './redux/slices/userSlice';
 import { authAPI } from './api/auth';
+import GoogleCallback from './components/LoginSignup/GoogleCallback';
+import CompleteProfile from './components/LoginSignup/CompleteProfile';
 
 function App() {
   const location = useLocation();
@@ -78,6 +80,8 @@ function App() {
       <Routes>
         <Route path="/signup/:referralCode?" element={<SignUp />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/auth-callback" element={<GoogleCallback />} />
+        <Route path="/complete-profile" element={<CompleteProfile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<MainLayout><Home /></MainLayout>} />
         <Route path="/discover" element={<MainLayout><Discover /></MainLayout>} />

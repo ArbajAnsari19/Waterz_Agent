@@ -4,8 +4,8 @@ import { useAppDispatch } from "../../redux/store/hook";
 import { setUserDetails } from "../../redux/slices/userSlice";
 import styles from "../../styles/LoginSignup/Login.module.css";
 import loginPic from "../../assets/LoginSignUp/signup.webp";
-import googleIcon from "../../assets/LoginSignUp/google.svg";
 import { authAPI } from "../../api/auth";
+import GoogleAuthButton from "./GoogleAuth";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -107,14 +107,7 @@ const LoginForm = () => {
               <span>or</span>
             </div>
 
-            <button 
-              type="button" 
-              className={styles.googleButton}
-              disabled={isLoading}
-            >
-              <img src={googleIcon} alt="Google" />
-              Sign In with Google
-            </button>
+            <GoogleAuthButton text="Sign in with Google" />
 
             <p className={styles.loginPrompt}>
               Don't have an account? <a href="/signup" className={styles.link}>Sign Up</a>
