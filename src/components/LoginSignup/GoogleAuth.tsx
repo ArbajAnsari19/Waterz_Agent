@@ -12,7 +12,9 @@ const GoogleAuthButton: React.FC<GoogleAuthButtonProps> = ({ text }) => {
     // window.location.href = 'http://localhost:8000/auth/google';
     
     // Use this for production:
-    window.location.href = 'https://www.backend.wavezgoa.com/auth/google';
+    const redirectUri = window.location.origin; // Will be https://www.agent.wavezgoa.com
+
+    window.location.href = `https://backend.wavezgoa.com/auth/google?redirect_uri=${encodeURIComponent(redirectUri)}`;
   };
 
   return (
