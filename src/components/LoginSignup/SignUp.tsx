@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/LoginSignup/Signup.module.css";
 import signPic from "../../assets/LoginSignUp/signup.webp";
-import googleIcon from "../../assets/LoginSignUp/google.svg";
 import OTPVerification from "./OTP";
 import { authAPI } from "../../api/auth";
 import SuccessScreen from "./OTPVerified";
